@@ -10,13 +10,13 @@ public class Move : MonoBehaviour
     public bool gameOver;
     public Camera cam;
     private Animator anim;
-    private float left=-10.55f;
-    private float right=10.51f;
     // Start is called before the first frame update
     void Start()
     {
       gameOver=false;
       anim=GetComponent<Animator>();
+      cam.orthographicSize = 5.750466f;
+      cam.transform.position=new Vector3(-0.46f,0.71f,-10f);
     }
     // Update is called once per frame
     void Update()
@@ -24,12 +24,12 @@ public class Move : MonoBehaviour
         //Debug.Log(gameOver);
         if(Input.anyKey){
           
-          if (Input.GetKey(KeyCode.LeftArrow)&&transform.position.x>left) {
+          if (Input.GetKey(KeyCode.LeftArrow)) {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             anim.SetBool("WalkRights",true);
             transform.position += Vector3.left * speed * Time.deltaTime;
          }
-          if (Input.GetKey(KeyCode.RightArrow)&&transform.position.x<right) {
+          if (Input.GetKey(KeyCode.RightArrow)) {
             anim.SetBool("WalkRights",true);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.position += Vector3.right * speed * Time.deltaTime;
@@ -43,30 +43,27 @@ public class Move : MonoBehaviour
             transform.position += Vector3.down * speed * Time.deltaTime;
           }
         }else{
-            anim.SetBool("WalkRights",false);
-            anim.SetBool("isJumping",false);
+          anim.SetBool("WalkRights",false);
+          anim.SetBool("isJumping",false);
            
         }    
     
     }
   public void OnTriggerEnter2D(Collider2D other) {
    if (other.gameObject.CompareTag("future")) {
-      transform.position=new Vector3(25.34f,-4f,-1f);
-      cam.transform.position=new Vector3(25.33f,0f,-10f);
-      right=32.42f;
-      left=17.32f;
+      transform.position=new Vector3(25.45f,-4f,-1f);
+      cam.orthographicSize = 7.004026f;
+      cam.transform.position=new Vector3(25.33f,1.09f,-10f);
     }
    if (other.gameObject.CompareTag("past")) {
       transform.position=new Vector3(-24.8f,-4f,-1f);
-      cam.transform.position=new Vector3(-24.57f,0f,-10f);
-      right=-15.51f;
-      left=-32.96f;
+      cam.transform.position=new Vector3(-25f,0.71f,-10f);
+      cam.orthographicSize = 6.087647f;
     }
    if (other.gameObject.CompareTag("present")) {
      transform.position=new Vector3(0f,-4f,-1f);
-     cam.transform.position=new Vector3(0,0f,-10f);
-     right=7.75f;
-     left=-6.41f;
+     cam.orthographicSize = 5.750466f;
+     cam.transform.position=new Vector3(-0.46f,0.71f,-10f);
     }
     
   }
