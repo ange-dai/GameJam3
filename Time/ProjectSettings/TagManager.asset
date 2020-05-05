@@ -7,6 +7,7 @@ TagManager:
   - past
   - present
   - future
+  - crystal
   layers:
   - Default
   - TransparentFX

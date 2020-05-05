@@ -16,7 +16,7 @@ public class Move : MonoBehaviour
       gameOver=false;
       anim=GetComponent<Animator>();
       cam.orthographicSize = 6.27537f;
-      cam.transform.position=new Vector3(-0.6f,0.71f,-35.3f);
+      cam.transform.position=new Vector3(-0.55f,0.71f,-35.3f);
     }
     // Update is called once per frame
     void Update()
@@ -61,9 +61,9 @@ public class Move : MonoBehaviour
       cam.orthographicSize = 6.59918f;
     }
    if (other.gameObject.CompareTag("present")) {
-     transform.position=new Vector3(0f,-4f,-1f);
+     transform.position=new Vector3(0f,-3.590561f,-1f);
      cam.orthographicSize = 6.27537f;
-     cam.transform.position=new Vector3(-0.46f,0.71f,-10f);
+     cam.transform.position=new Vector3(-0.55f,0.71f,-10f);
     }
     
   }
