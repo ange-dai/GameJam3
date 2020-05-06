@@ -10,6 +10,8 @@ public class Move : MonoBehaviour
     public bool gameOver;
     public Camera cam;
     private Animator anim;
+    public int hearts;
+    public bool dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class Move : MonoBehaviour
       anim=GetComponent<Animator>();
       cam.orthographicSize = 6.27537f;
       cam.transform.position=new Vector3(-0.55f,0.71f,-35.3f);
+      dead=true;
     }
     // Update is called once per frame
     void Update()
@@ -47,7 +50,7 @@ public class Move : MonoBehaviour
           anim.SetBool("isJumping",false);
            
         }    
-    
+      isDead();
     }
   public void OnTriggerEnter2D(Collider2D other) {
    if (other.gameObject.CompareTag("future")) {
@@ -67,5 +70,19 @@ public class Move : MonoBehaviour
     }
     
   }
+
+ public void OnCollisionEnter2D(Collision2D other){
+   if(other.gameObject.CompareTag("enemy")){
+     Debug.Log("hit "+ hearts);
+     hearts--;
+   }
+ }
+
+ private void isDead(){
+   if(hearts==0){
+     //ending scene
+     Debug.Log("dead");
+   }
+ }
   
 }
