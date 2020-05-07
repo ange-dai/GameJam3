@@ -11,7 +11,8 @@ public class Move : MonoBehaviour
     public Camera cam;
     private Animator anim;
     public int hearts;
-    public bool dead;
+    private bool dead;
+    public GameObject astro;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,7 @@ public class Move : MonoBehaviour
       cam.transform.position=new Vector3(25.52f,0.71f,-35.3f);
     }
    if (other.gameObject.CompareTag("past")) {
-      transform.position=new Vector3(-24.8f,-4f,-1f);
+      transform.position=new Vector3(-24.8f,-3.6f,-1f);
       cam.transform.position=new Vector3(-25.01f,0.71f,-35.3f);
       cam.orthographicSize = 6.59918f;
     }
@@ -67,6 +68,9 @@ public class Move : MonoBehaviour
      transform.position=new Vector3(0f,-3.590561f,-1f);
      cam.orthographicSize = 6.27537f;
      cam.transform.position=new Vector3(-0.55f,0.71f,-10f);
+    }
+    if (other.gameObject.CompareTag("crystal")) {
+     other.gameObject.SetActive(false);
     }
     
   }
@@ -80,9 +84,9 @@ public class Move : MonoBehaviour
 
  private void isDead(){
    if(hearts==0){
-     //ending scene
-     Debug.Log("dead");
+     //astro.SetActive(false);
    }
  }
+ 
   
 }
