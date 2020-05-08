@@ -9,6 +9,7 @@ TagManager:
   - future
   - crystal
   - enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
